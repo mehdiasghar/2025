@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Year Card</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #ffe4e1, #ffc1c1);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 90%;
+      width: 80%;
+      height: 50%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .cover-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 2s;
+    }
+    .inner-page {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h1 {
+      font-size: 2em;
+      margin: 0;
+      color: #e91e63;
+    }
+    .animated-text {
+      font-size: 1.5em;
+      color: #4caf50;
+      margin-top: 20px;
+      animation: textAnimation 4s infinite;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    @keyframes textAnimation {
+      0% {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      50% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #e91e63;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="card cover-page" id="cover-page">
+    <h1>Happy New Year, Numaira! 🎉</h1>
+    <button onclick="showInnerPage()">Open Card</button>
+  </div>
+  <div class="card inner-page" id="inner-page">
+    <h1>Dear Numaira,</h1>
+    <p>Wishing you all the joy and success in 2025! 🌟</p>
+    <div class="animated-text" id="animated-text"></div>
+    <p class="footer">With best wishes, Mehdi</p>
+  </div>
+
+  <script>
+    const coverPage = document.getElementById('cover-page');
+    const innerPage = document.getElementById('inner-page');
+    const animatedText = document.getElementById('animated-text');
+
+    const wishes = [
+      "May this year bring endless happiness and love! 💖",
+      "Wishing you health, wealth, and prosperity! 🌟",
+      "Cheers to new adventures and unforgettable memories! 🎉",
+      "May all your dreams come true in 2025! ✨",
+      "Happiness and success await you this year! 🎊"
+    ];
+
+    let currentWishIndex = 0;
+
+    function cycleWishes() {
+      animatedText.textContent = wishes[currentWishIndex];
+      currentWishIndex = (currentWishIndex + 1) % wishes.length;
+    }
+
+    function showInnerPage() {
+      coverPage.style.display = 'none';
+      innerPage.style.display = 'flex';
+      cycleWishes();
+      setInterval(cycleWishes, 4000);
+    }
+  </script>
+</body>
+</html>
